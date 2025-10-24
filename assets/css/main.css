@@ -1306,9 +1306,9 @@ input, select, textarea {
 	}
 
 	body {
-		background-image: url("images/overlay.png"), url("images/bg.jpg");
-		background-repeat: repeat, no-repeat;
-		background-size: auto, 100% 100%;
+		background-image: url("images/bg.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
 		background-attachment: fixed;
 		overflow-y: scroll;
 	}
@@ -2189,3 +2189,16 @@ input, select, textarea {
 			}
 
 		}
+		/* Sérstakur stíll fyrir "SPILA" takkann */
+.spila-takki {
+    background-color: #268ea5 !important; /* Grænn litur sem grípur augað */
+    font-weight: bold !important;
+    font-size: 1.1em !important;
+	text-decoration: none !important; /* Örlítið stærra letur */
+    transition: transform 0.2s ease-in-out; /* Mjúk hreyfing þegar músin fer yfir */
+}
+
+.spila-takki:hover {
+    background-color: #35b351 !important; /* Örlítið bjartari þegar músin fer yfir */
+    transform: scale(1.05); /* Stækkar aðeins til að sýna að hann sé virkur */
+}
