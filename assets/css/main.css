@@ -2202,3 +2202,77 @@ input, select, textarea {
     background-color: #35b351 !important; /* Örlítið bjartari þegar músin fer yfir */
     transform: scale(1.05); /* Stækkar aðeins til að sýna að hann sé virkur */
 }
+
+
+
+.project-image {
+    width: 100%;
+    height: 200px;             
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    border-radius: 10px;      
+}
+
+
+.project-image:hover {
+    transform: scale(1.05);
+    filter: brightness(0.7);
+    cursor: pointer;
+}
+/* Contact section */
+#samband {
+  text-align: center;
+}
+#verkefni {
+  text-align: center;
+}
+
+/* Layout container */
+.contact-container {
+  display: flex;
+  justify-content: space-between; /* even space between icons */
+  align-items: center;
+  max-width: 700px; /* keeps them centered with margins */
+  margin: 2em auto 0 auto; /* centers horizontally */
+  gap: 2em;
+}
+
+/* Each contact item */
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1; /* all take equal width */
+}
+
+/* The icons */
+.contact-item img {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.contact-item img:hover {
+  transform: scale(1.1);
+}
+
+/* Text under each icon */
+.contact-item p {
+  margin-top: 0.5em;
+  font-size: 1.1em;
+  font-family: "Poppins", sans-serif;
+  text-align: center; /* centers the text under the image */
+}
+
+/* Links */
+.contact-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+

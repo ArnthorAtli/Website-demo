@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+precision mediump float;
+attribute vec4 vPosition;
+attribute vec4 vColor;
+uniform vec4 translation;
+uniform vec4 uColor;
+varying vec4 fColor;
+uniform int useColor;
+
+void
+main()
+{
+    if(useColor==0)
+        fColor = vColor;
+    
+    else
+        fColor = uColor;
+    
+    gl_Position = vPosition+translation;    
+    
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+uniform vec4 color;
+varying vec4 fColor;
+
+void
+main()
+{
+   gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="house.js"></script>
+</head>
+
+<body>
+<button id="MyButton">My Button</button>
+<button id="z+1">z+0.1</button>
+<button id="z-1">z-0.1</button>
+<p>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+</body>
+</html>

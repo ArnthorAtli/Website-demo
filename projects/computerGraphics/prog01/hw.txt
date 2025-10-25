@@ -1,0 +1,87 @@
+I already asked you to share a folder with me on OneDrive.  If you did
+it soon enough, I will have copied Common and prog01 to this folder,
+including this hw.txt file.
+
+
+1. Make sure that your shared folder syncs to your hard disk.  Locate
+   it in Terminal or the Command prompt.
+
+
+2. Install the latest version of Chrome and the Shader Editor
+   extension on your computer:
+
+https://www.google.com/chrome/
+
+https://chrome.google.com/webstore/detail/shader-editor/ggeaidddejpbakgafapihjbgdlbbbpob?hl=en
+
+
+3. Visit prog01/square.html (in your synced shared course folder) in
+   Chrome on your computer.  Do you see a white square?
+
+
+4. Where is the color of the square determined?  Make a change to turn
+   it yellow and refresh  (shift-command-R on my Mac).
+
+   You will have to edit a file.  I use emacs, but please suggest
+   other options.
+
+
+5. Where is the shape of the square determined?  Change one of its
+   corners.
+
+
+6. The shader editor needs to interact with a web server.  To start
+   the web server in open a terminal or command prompt cd to your
+   course folder.  Run
+
+python3 -m http.server
+
+   This may require some tinkering.
+
+   To load a homework html file in Chrome, start at the URL
+
+localhost:8000
+
+   then navigate to prog01/rotatingSquare3.html or prog01/square.html
+
+
+7. Load rotatingSquare3.html.  Look at ChromeTools.pdf.  Do all the
+   same things (but use the instructions above to get to
+   rotatingSquare3.html).  Also click "Program 1" to see the shader
+   editors.
+
+
+8. Close the console and this tab.  Open the console in square.html.
+   If you have problems, you might need to restart the browswer.
+
+   Add a line in square.js just before the call to render():
+
+	console.log("Hello");
+
+   Reload.  Where is the Hello?
+
+
+8. Set a breakpoint on that line and refresh.  Single step to make the
+   Hello appear.  Take a screen shot.  Single step until the square
+   appears and take another screen shot.
+
+   Put all the screenshots in your prog01 folder.
+
+
+9. Modify the fragment color in the shader editor.  In the console, run
+
+	render()
+
+   so the color changes.
+
+
+10. Move the square over by adding 0.25 to the x-coordinate.  You can't
+    modify vPosition because it is input data (an attribute).  You need to
+    copy it into another variable first.  Call render() again.
+
+    Take a screen shot of the recolored and displaced square and the
+    editor windows.
+
+
+
+
