@@ -1,53 +1,82 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <title>Arnþór Atlason - Pygame</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    
+
     <link rel="stylesheet" href="../assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+    <noscript>
+        <link rel="stylesheet" href="../assets/css/noscript.css" />
+    </noscript>
 </head>
+
 <body class="is-preload">
 
     <div id="wrapper">
 
         <div id="main">
             <article class="panel">
-                
+
                 <header>
                     <h2>Pygame leikur</h2>
                     <p>Leikur sem ég gerði í tölvuleikja áfanga sem ég tók í Menntaskólanum á Akureyri </p>
                 </header>
 
                 <section>
-                    <h3>Sýnishorn (Screenshots)</h3>
-                    <div class="row">
-                        <div class="col-6 col-12-medium">
-                            <a href="#" class="image fit"><img src="../images/javafx-screenshot-1.jpg" alt="Screenshot of the game menu"></a>
-                        </div>
-                        <div class="col-6 col-12-medium">
-                            <a href="#" class="image fit"><img src="../images/javafx-screenshot-2.jpg" alt="Screenshot of gameplay"></a>
-                        </div>
-                    </div>
-
                     <h3 style="margin-top: 2em;">Um Verkefnið</h3>
                     <p>
-                        Í þessu verkefni var markmiðið að... (Hér skrifar þú nánari lýsingu á verkefninu, hvaða áskoranir þú tókst, og hvað þú lærðir).
+                        Þar sem Pygame er ekki game engine heldur frekar bara python library sem hjálpar til við að búa
+                        til leiki, þurfti ég að forrita nánast allt frá grunni. Ég lærði mikið um grunnatriði í
+                        leikjagerð eins og collision detection, game loops, event handling og fleira.
                     </p>
+                    <section>
+                        <h3 style="text-align: center; margin-top: 2em;">Leikurinn í spilun</h3>
+                        <div class="video-container"
+                            style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                src="https://www.youtube.com/embed/5w9zJCz05AI" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </section>
+                    <h3 style="margin-top: 2em;">Maps</h3>
+                    <p>
+                        Ein helsta áskorunin var að gera möppinn fyrir leikinn. Ég notaði Tiled til þess að teikna hvert
+                        map. Svo þurfti ég að skrá inn hvert platform sem ég vildi að maður gæti staðið á eða ekki
+                        labbað í gegnum í venjulegan python lista. Svo er leik-lúpan að lesa þennan lista 60 sinnum á
+                        sekúndu til að athuga hvort leikmaðurinn sé að rekast á eitthvað.
+                    </p>
+                    <div class="row">
+                        <div class="col-4 col-12-small">
+                            <a href="../images/map1.png" class="image fit"><img src="../images/map1.png"
+                                    class="project-image"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/map2.png" class="image fit"><img src="../images/map2.png"
+                                    class="project-image"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/map3.png" class="image fit"><img src="../images/map3.png"
+                                    class="project-image"></a>
+                        </div>
+                    </div>
 
                     <h3>Tækni</h3>
                     <ul>
                         <li>Python</li>
                         <li>Pygame</li>
-                        <li>SpriteEditor</li>
+                        <li>Tiled</li>
                     </ul>
                 </section>
-                
+
             </article>
         </div>
 
-         <div id="footer">
+        <div id="footer">
             <a href="../index.html#verkefni" class="button large spila-takki">← Til baka</a>
         </div>
 
@@ -60,4 +89,5 @@
     <script src="../assets/js/main.js"></script>
 
 </body>
+
 </html>
