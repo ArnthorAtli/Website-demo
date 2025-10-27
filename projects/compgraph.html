@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="icon" type="image/png" href="../images/steindi.png">
     <title>Arnþór Atlason - Computer Graphics</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -71,13 +72,15 @@
                         </div>
                     </div>
 
-
+                    <hr />
 
                     <h3>Tækni</h3>
+                    Öll verkefnin eru unnin í WebGL, sem er JavaScript viðmót til að keyra 3D-grafík beint í browser með hjálp skjákortsins. WebGL notar tvær gerðir af shader-forritum:
+
                     <ul>
-                        <li>JavaScript</li>
-                        <li>HTML</li>
-                        <li>Línuleg Algebra</li>
+                        <li><strong>Vertex shaders:</strong> Sjá um hnit punkta í 3D og umbreyta þeim í 2D-hnit fyrir teikningu á skjáinn.</li>
+                        <li><strong>Fragment shaders:</strong> Sjá um litun og texture fyrir hvern pixil á skjánum.</li>
+                        <li><strong>JavaScript:</strong> Sér um allt annað, bregðast við mús og tökkum, búa til form og senda gögn til shaders.</li>
                     </ul>
                 </section>
 
