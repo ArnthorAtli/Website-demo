@@ -1,88 +1,182 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <link rel="icon" type="image/png" href="../images/steindi.png">
     <title>Arnþór Atlason - Unity Leikur</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    
+
     <link rel="stylesheet" href="../assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+    <noscript>
+        <link rel="stylesheet" href="../assets/css/noscript.css" />
+    </noscript>
 </head>
+
 <body class="is-preload">
 
     <div id="wrapper">
 
         <div id="main">
             <article class="panel">
-                
+
                 <header>
                     <h2 style="text-align: center;">Spreading Covid19</h2>
                 </header>
-                <img src="../images/Allanim Asiandude.png" alt="Character animation sprite sheet" style="width: 100%; height: auto; border: 1px solid #ddd;">
-                
+                <img src="../images/Allanim Asiandude.png" alt="Character animation sprite sheet"
+                    style="width: 100%; height: auto; border: 1px solid #ddd;">
+
                 <h3 style="margin-top: 2em;">Um Leikinn</h3>
                 <p>
-                    Í þessum leik ertu að spila sem fyrsti maðurinn sem fékk Covid-19. Markmiðið þitt er að smita 10 manneskjur í landinu þínu og fara svo til annara landa og smita þar líka. 
+                    Í þessum leik ertu að spila sem fyrsti maðurinn sem fékk Covid-19. Markmiðið þitt er að smita 10
+                    manneskjur í landinu þínu og fara svo til annara landa og smita þar líka.
                 </p>
-                <div style="text-align:center; margin-top:1.5em;">
-                    <a href="../CovidGame/index.html" class="button large spila-takki">SPILA LEIKINN</a>
-                </div>
+                <!-- Unity leikurinn -->
+                <section style="text-align:center; margin-top:2em;">
+                    <div id="unity-container" class="unity-desktop" style="display:inline-block;">
+                        <canvas id="unity-canvas" width="720" height="405" tabindex="-1"></canvas>
+                        <div id="unity-loading-bar">
+                            <div id="unity-logo"></div>
+                            <div id="unity-progress-bar-empty">
+                                <div id="unity-progress-bar-full"></div>
+                            </div>
+                        </div>
+                        <div id="unity-warning"></div>
+                        <div id="unity-footer" style="margin-top: 0.5em;">
+                            <button id="unity-fullscreen-button"
+                                style="padding: 5px 10px; font-size: 14px; cursor: pointer;">Fullscreen</button>
+                        </div>
+                    </div>
+
+                    <script>
+                        var canvas = document.querySelector("#unity-canvas");
+
+                        function unityShowBanner(msg, type) {
+                            var warningBanner = document.querySelector("#unity-warning");
+                            function updateBannerVisibility() {
+                                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+                            }
+                            var div = document.createElement('div');
+                            div.innerHTML = msg;
+                            warningBanner.appendChild(div);
+                            if (type == 'error') div.style = 'background: red; padding: 10px;';
+                            else {
+                                if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+                                setTimeout(function () {
+                                    warningBanner.removeChild(div);
+                                    updateBannerVisibility();
+                                }, 5000);
+                            }
+                            updateBannerVisibility();
+                        }
+
+                        // Ath: breyttar slóðir
+                        var buildUrl = "../CovidGame/Build";
+                        var loaderUrl = buildUrl + "/CovidGame.loader.js";
+                        var config = {
+                            dataUrl: buildUrl + "/CovidGame.data",
+                            frameworkUrl: buildUrl + "/CovidGame.framework.js",
+                            codeUrl: buildUrl + "/CovidGame.wasm",
+                            streamingAssetsUrl: "../CovidGame/StreamingAssets",
+                            companyName: "DefaultCompany",
+                            productName: "Covid-19Game",
+                            productVersion: "0.1",
+                            showBanner: unityShowBanner,
+                        };
+
+                        // Desktop size
+                        canvas.style.width = "720px";
+                        canvas.style.height = "405px";
+
+                        document.querySelector("#unity-loading-bar").style.display = "block";
+
+                        var script = document.createElement("script");
+                        script.src = loaderUrl;
+                        script.onload = () => {
+                            createUnityInstance(canvas, config, (progress) => {
+                                document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+                            }).then((unityInstance) => {
+                                document.querySelector("#unity-loading-bar").style.display = "none";
+                                document.querySelector("#unity-fullscreen-button").onclick = () => {
+                                    unityInstance.SetFullscreen(1);
+                                };
+                            }).catch((message) => {
+                                alert(message);
+                            });
+                        };
+                        document.body.appendChild(script);
+                    </script>
+                </section>
+
                 <h3 style="margin-top: 2em;">Saga Leiksins</h3>
                 <p>
-                    Saga þessa leiks hófst árið 2020, þegar ég bjó í Ástralíu í miðjum Covid-19 heimsfaraldrinum. Þegar skólanum var lokað ákvað ég að nýta tímann og kenna sjálfum mér tölvuleikjagerð.
+                    Saga þessa leiks hófst árið 2020, þegar ég bjó í Ástralíu í miðjum Covid-19 heimsfaraldrinum. Þegar
+                    skólanum var lokað ákvað ég að nýta tímann og kenna sjálfum mér tölvuleikjagerð.
                 </p>
 
                 <ul>
                     <li>
-                        <strong>Upprunalega útgáfan (2020):</strong> Leikurinn var þriðja tilraun mín í leikjagerð. Ég forritaði Kína-borðið og byrjaði á Ítalíu-borðinu, út af fyrstu Covid-smit á Íslandi komu frá skíðaferð í Ítalíu, en lauk því aldrei.
+                        <strong>Upprunalega útgáfan (2020):</strong> Leikurinn var þriðja tilraun mín í leikjagerð. Ég
+                        forritaði Kína-borðið og byrjaði á Ítalíu-borðinu, út af fyrstu Covid-smit á Íslandi komu frá
+                        skíðaferð í Ítalíu, en lauk því aldrei.
                     </li>
                     <li style="margin-top: 1em;">
-                        <strong>Endurgerð (2025):</strong> Fimm árum síðar, í tölvuleikjaáfanga við Háskólann í Miami, ákvað ég klára verkefnið. Ég lagaði villur og léinlegan kóða sem 15 ára ég skrifaði, fínpússaði spilunina og bætti við nýju Íslands-borði til að fullkomna verkið.
+                        <strong>Endurgerð (2025):</strong> Fimm árum síðar, í tölvuleikjaáfanga við Háskólann í Miami,
+                        ákvað ég klára verkefnið. Ég lagaði villur og léinlegan kóða sem 15 ára ég skrifaði, fínpússaði
+                        spilunina og bætti við nýju Íslands-borði til að fullkomna verkið.
                     </li>
                 </ul>
-                
+
 
                 <section>
-                   <h3 style="margin-top: 2em;text-align: center;">Kína</h3>
+                    <h3 style="margin-top: 2em;text-align: center;">Kína</h3>
                     <div class="row">
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss1.png" class="image fit"><img src="../images/ss1.png" alt="Screenshot from the China level"></a>
+                            <a href="../images/ss1.png" class="image fit"><img src="../images/ss1.png"
+                                    alt="Screenshot from the China level"></a>
                         </div>
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss2.png" class="image fit"><img src="../images/ss2.png" alt="Screenshot from the China level"></a>
+                            <a href="../images/ss2.png" class="image fit"><img src="../images/ss2.png"
+                                    alt="Screenshot from the China level"></a>
                         </div>
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss3.png" class="image fit"><img src="../images/ss3.png" alt="Screenshot from the China level"></a>
+                            <a href="../images/ss3.png" class="image fit"><img src="../images/ss3.png"
+                                    alt="Screenshot from the China level"></a>
                         </div>
                     </div>
 
                     <h3 style="margin-top: 2em;text-align: center;">Ítalía</h3>
                     <div class="row">
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss4.png" class="image fit"><img src="../images/ss4.png" alt="Screenshot from the Italy level"></a>
+                            <a href="../images/ss4.png" class="image fit"><img src="../images/ss4.png"
+                                    alt="Screenshot from the Italy level"></a>
                         </div>
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss5.png" class="image fit"><img src="../images/ss5.png" alt="Screenshot from the Italy level"></a>
+                            <a href="../images/ss5.png" class="image fit"><img src="../images/ss5.png"
+                                    alt="Screenshot from the Italy level"></a>
                         </div>
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss6.png" class="image fit"><img src="../images/ss6.png" alt="Screenshot from the Italy level"></a>
+                            <a href="../images/ss6.png" class="image fit"><img src="../images/ss6.png"
+                                    alt="Screenshot from the Italy level"></a>
                         </div>
                     </div>
 
                     <h3 style="margin-top: 2em;text-align: center;">Ísland</h3>
                     <div class="row">
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss7.png" class="image fit"><img src="../images/ss7.png" alt="Screenshot from the Iceland level"></a>
+                            <a href="../images/ss7.png" class="image fit"><img src="../images/ss7.png"
+                                    alt="Screenshot from the Iceland level"></a>
                         </div>
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss8.png" class="image fit"><img src="../images/ss8.png" alt="Screenshot from the Iceland level"></a>
+                            <a href="../images/ss8.png" class="image fit"><img src="../images/ss8.png"
+                                    alt="Screenshot from the Iceland level"></a>
                         </div>
                         <div class="col-4 col-12-small">
-                            <a href="../images/ss9.png" class="image fit"><img src="../images/ss9.png" alt="Screenshot from the Iceland level"></a>
+                            <a href="../images/ss9.png" class="image fit"><img src="../images/ss9.png"
+                                    alt="Screenshot from the Iceland level"></a>
                         </div>
                     </div>
-                    
+
                     <h3>Tækni</h3>
                     <ul>
                         <li>Unity</li>
@@ -93,7 +187,7 @@
                     </ul>
 
                 </section>
-                
+
             </article>
         </div>
 
@@ -110,4 +204,5 @@
     <script src="../assets/js/main.js"></script>
 
 </body>
+
 </html>
