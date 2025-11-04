@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="icon" type="image/png" href="../images/steindi.png">
+    <title>Arnthor Atlason - Pygame</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="../assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+
+    <div id="wrapper">
+
+        <div id="main">
+            <article class="panel">
+
+                <header>
+                    <h2>Pygame Game</h2>
+                    <p>A game I made in a video game course I took at Menntaskólinn á Akureyri.</p>
+                </header>
+
+                <section>
+                    <h3 style="margin-top: 2em;">About the Project</h3>
+                    <p>
+                        Since Pygame is not a game engine but rather a Python library that helps build games, I had to program almost everything from scratch. I learned a lot about core game development concepts such as collision detection, game loops, event handling, and more.
+                    </p>
+
+                    <section>
+                        <h3 style="text-align: center; margin-top: 2em;">Gameplay Video</h3>
+                        <div class="video-container"
+                            style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                src="https://www.youtube.com/embed/5w9zJCz05AI" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </section>
+
+                    <h3 style="margin-top: 2em;">Maps</h3>
+                    <p>
+                        One of the biggest challenges was creating the maps for the game. I used Tiled to draw each map, then manually registered every platform that the player could stand on or couldn’t walk through in a regular Python list. The game loop reads this list 60 times per second to check if the player is colliding with anything.
+                    </p>
+
+                    <div class="row">
+                        <div class="col-4 col-12-small">
+                            <a href="../images/map1.png" class="image fit"><img src="../images/map1.png"
+                                    class="project-image"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/map2.png" class="image fit"><img src="../images/map2.png"
+                                    class="project-image"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/map3.png" class="image fit"><img src="../images/map3.png"
+                                    class="project-image"></a>
+                        </div>
+                    </div>
+
+                    <h3>Technology</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Pygame</li>
+                        <li>Tiled</li>
+                    </ul>
+                </section>
+
+            </article>
+        </div>
+
+        <div id="footer">
+            <a href="../index_en.html#projects" class="button large spila-takki">← Back</a>
+        </div>
+
+    </div>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

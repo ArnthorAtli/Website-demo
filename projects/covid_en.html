@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="icon" type="image/png" href="../images/steindi.png">
+    <title>Arnthor Atlason - Unity Game</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="../assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+
+    <div id="wrapper">
+
+        <div id="main">
+            <article class="panel">
+
+                <header>
+                    <h2 style="text-align: center;">Spreading Covid19</h2>
+                </header>
+                <img src="../images/Allanim Asiandude.png" alt="Character animation sprite sheet"
+                    style="width: 100%; height: auto; border: 1px solid #ddd;">
+
+                <h3 style="margin-top: 2em;">About the Game</h3>
+                <p>
+                    In this game, you play as the first person infected with Covid-19. Your goal is to infect 10 people in your country, then travel to other countries to infect people more people.
+                </p>
+
+                <section style="text-align:center; margin-top:2em;">
+                    <div id="unity-container" class="unity-desktop" style="display:inline-block;">
+                        <canvas id="unity-canvas" width="720" height="405" tabindex="-1"></canvas>
+                        <div id="unity-loading-bar">
+                            <div id="unity-logo"></div>
+                            <div id="unity-progress-bar-empty">
+                                <div id="unity-progress-bar-full"></div>
+                            </div>
+                        </div>
+                        <div id="unity-warning"></div>
+                        <div id="unity-footer" style="margin-top: 0.5em;">
+                            <button id="unity-fullscreen-button"
+                                style="padding: 5px 10px; font-size: 14px; cursor: pointer;">Fullscreen</button>
+                        </div>
+                    </div>
+
+                    <script>
+                        var canvas = document.querySelector("#unity-canvas");
+
+                        function unityShowBanner(msg, type) {
+                            var warningBanner = document.querySelector("#unity-warning");
+                            function updateBannerVisibility() {
+                                warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+                            }
+                            var div = document.createElement('div');
+                            div.innerHTML = msg;
+                            warningBanner.appendChild(div);
+                            if (type == 'error') div.style = 'background: red; padding: 10px;';
+                            else {
+                                if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+                                setTimeout(function () {
+                                    warningBanner.removeChild(div);
+                                    updateBannerVisibility();
+                                }, 5000);
+                            }
+                            updateBannerVisibility();
+                        }
+
+                        var buildUrl = "../CovidGame/Build";
+                        var loaderUrl = buildUrl + "/CovidGame.loader.js";
+                        var config = {
+                            dataUrl: buildUrl + "/CovidGame.data",
+                            frameworkUrl: buildUrl + "/CovidGame.framework.js",
+                            codeUrl: buildUrl + "/CovidGame.wasm",
+                            streamingAssetsUrl: "../CovidGame/StreamingAssets",
+                            companyName: "DefaultCompany",
+                            productName: "Covid-19Game",
+                            productVersion: "0.1",
+                            showBanner: unityShowBanner,
+                        };
+
+                        canvas.style.width = "720px";
+                        canvas.style.height = "405px";
+
+                        document.querySelector("#unity-loading-bar").style.display = "block";
+
+                        var script = document.createElement("script");
+                        script.src = loaderUrl;
+                        script.onload = () => {
+                            createUnityInstance(canvas, config, (progress) => {
+                                document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+                            }).then((unityInstance) => {
+                                document.querySelector("#unity-loading-bar").style.display = "none";
+                                document.querySelector("#unity-fullscreen-button").onclick = () => {
+                                    unityInstance.SetFullscreen(1);
+                                };
+                            }).catch((message) => {
+                                alert(message);
+                            });
+                        };
+                        document.body.appendChild(script);
+                    </script>
+                </section>
+
+                <h3 style="margin-top: 2em;">Story of the Game</h3>
+                <p>
+                    The story of this game began in 2020, when I was living in Australia during the Covid-19 pandemic. When school shut down, I decided to use my free time to teach myself game development.
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Original Version (2020):</strong> The game was my third attempt at making a video game. I made the China level and started working on the Italy level, since the first Covid-19 cases in Iceland came from Italy, but I never finished the Italy level.
+                    </li>
+                    <li style="margin-top: 1em;">
+                        <strong>Remake (2025):</strong> Five years later, in a game development course at the University of Miami, I decided to finish it. I fixed the bugs and the messy code written by 15-year-old me, refined the gameplay, and added a new Iceland level to complete the project.
+                    </li>
+                </ul>
+
+                <section>
+                    <h3 style="margin-top: 2em;text-align: center;">China</h3>
+                    <div class="row">
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss1.png" class="image fit"><img src="../images/ss1.png"
+                                    alt="Screenshot from the China level"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss2.png" class="image fit"><img src="../images/ss2.png"
+                                    alt="Screenshot from the China level"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss3.png" class="image fit"><img src="../images/ss3.png"
+                                    alt="Screenshot from the China level"></a>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2em;text-align: center;">Italy</h3>
+                    <div class="row">
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss4.png" class="image fit"><img src="../images/ss4.png"
+                                    alt="Screenshot from the Italy level"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss5.png" class="image fit"><img src="../images/ss5.png"
+                                    alt="Screenshot from the Italy level"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss6.png" class="image fit"><img src="../images/ss6.png"
+                                    alt="Screenshot from the Italy level"></a>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 2em;text-align: center;">Iceland</h3>
+                    <div class="row">
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss7.png" class="image fit"><img src="../images/ss7.png"
+                                    alt="Screenshot from the Iceland level"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss8.png" class="image fit"><img src="../images/ss8.png"
+                                    alt="Screenshot from the Iceland level"></a>
+                        </div>
+                        <div class="col-4 col-12-small">
+                            <a href="../images/ss9.png" class="image fit"><img src="../images/ss9.png"
+                                    alt="Screenshot from the Iceland level"></a>
+                        </div>
+                    </div>
+
+                    <h3>Technology</h3>
+                    <ul>
+                        <li>Unity</li>
+                        <li>C#</li>
+                        <li>Photoshop</li>
+                        <li>Audio Editing</li>
+                        <li>Sprite Animation</li>
+                    </ul>
+
+                </section>
+
+            </article>
+        </div>
+
+        <div id="footer">
+            <a href="../index_en.html#projects" class="button large spila-takki">← Back</a>
+        </div>
+
+    </div>
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/browser.min.js"></script>
+    <script src="../assets/js/breakpoints.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

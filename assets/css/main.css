@@ -2276,3 +2276,25 @@ input, select, textarea {
 }
 
 
+.language-switch-inside {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 5px; 
+}
+
+
+.language-switch-inside img {
+  width: 32px;
+  margin-left: 8px;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.language-switch-inside img:hover {
+  transform: scale(1.1);
+}
+
